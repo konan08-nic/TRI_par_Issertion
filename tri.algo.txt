@@ -1,0 +1,41 @@
+procédure tri_insertion(tb:ARRAY OF INTEGER)
+VAR
+    i,n,x,j:INTEGER;
+
+    //initialisation des variables
+        i:=0;
+        x:=0;
+        j:=0;
+BEGIN
+
+         //la longueur du tableau
+         Write("entrez la longueur du tableau svp");
+         Read(n)
+
+         // saisie des elements du tableau
+
+            FOR i FROM 0 TO n-1 STEP 1 DO
+                Write("entrez l'element du tableau");
+                Read(tb[i]);
+            END_FOR
+
+
+            //mémoriser tb[i] dans x
+            FOR i FROM 0 TO n-1 STEP 1 DO
+                x:=x+ tb[i]
+                 j := i  
+
+                //décaler les éléments tb[0]..tb[i-1] qui sont plus grands que x, en partant de tb[i-1]
+                                        
+                WHILE (j > 0 et tb[j - 1] > x) DO 
+                     tb[j]:= tb[j - 1]
+                     j:= j - 1
+    
+                END_WHILE
+
+                // placer x dans le trou laissé par le décalage
+
+                tb[j] := x     
+            END_FOR
+   Write ("le tableau trié est:"tb[j]);
+END
